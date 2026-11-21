@@ -70,9 +70,16 @@ function renderizarProximosPagos() {
 document.getElementById("formulario-gasto").addEventListener("submit", (evento) => {
   evento.preventDefault();
 
+  const nombre = document.getElementById("nombre").value.trim();
+  const montoTexto = document.getElementById("monto").value.trim();
+
+  if (!nombre || montoTexto === "") {
+    return;
+  }
+
   const registro = {
-    nombre: document.getElementById("nombre").value.trim(),
-    monto: Number(document.getElementById("monto").value),
+    nombre,
+    monto: Number(montoTexto),
     fechaPago: document.getElementById("fecha-pago").value,
     frecuencia: document.getElementById("frecuencia").value
   };
