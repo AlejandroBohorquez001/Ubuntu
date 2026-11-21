@@ -43,6 +43,13 @@ function formatearFecha(fecha) {
   }).format(fecha);
 }
 
+function diasHasta(fecha) {
+  const hoy = new Date();
+  hoy.setHours(0, 0, 0, 0);
+  const milisegundosPorDia = 24 * 60 * 60 * 1000;
+  return Math.round((fecha - hoy) / milisegundosPorDia);
+}
+
 function renderizarProximosPagos() {
   const lista = document.getElementById("lista-proximos-pagos");
   const registros = cargarRegistros();
@@ -61,8 +68,10 @@ function renderizarProximosPagos() {
   }
 
   proximos.forEach((registro) => {
+    const dias = diasHasta(registro.proximaFecha);
+    const textoDias = dias === 1 ? "1 día" : `${dias} días`;
     const item = document.createElement("li");
-    item.textContent = `${registro.nombre} — ${registro.monto.toFixed(2)} € — ${formatearFecha(registro.proximaFecha)} (${registro.frecuencia})`;
+    item.textContent = `${registro.nombre} — ${registro.monto.toFixed(2)} € — ${formatearFecha(registro.proximaFecha)} (${registro.frecuencia}) — faltan ${textoDias}`;
     lista.append(item);
   });
 }
