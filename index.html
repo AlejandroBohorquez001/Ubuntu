@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PagoClaro</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>PagoClaro</h1>
+    <p>Registra tus gastos y suscripciones y conoce tus próximos pagos.</p>
+  </header>
+
+  <main>
+    <section aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Nuevo registro</h2>
+      <form id="formulario-gasto">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="monto">Monto</label>
+        <input type="number" id="monto" name="monto" min="0" step="0.01" required>
+
+        <label for="fecha-pago">Fecha de pago</label>
+        <input type="date" id="fecha-pago" name="fecha-pago" required>
+
+        <label for="frecuencia">Frecuencia</label>
+        <select id="frecuencia" name="frecuencia" required>
+          <option value="mensual">Mensual</option>
+          <option value="anual">Anual</option>
+        </select>
+
+        <button type="submit">Guardar</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="titulo-proximos">
+      <h2 id="titulo-proximos">Próximos pagos</h2>
+      <ul id="lista-proximos-pagos"></ul>
+    </section>
+  </main>
+</body>
+</html>
